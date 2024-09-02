@@ -1,0 +1,24 @@
+type Task = 
+ record {
+   category: text;
+   dueDate: int;
+   id: nat;
+   isOverdue: bool;
+   title: text;
+ };
+type Result_1 = 
+ variant {
+   err: text;
+   ok: nat;
+ };
+type Result = 
+ variant {
+   err: text;
+   ok;
+ };
+service : {
+  addTask: (text, text, int) -> (Result_1);
+  deleteTask: (nat) -> (Result);
+  getTasks: () -> (vec Task) query;
+  updateTask: (nat, opt text, opt text, opt int) -> (Result);
+}
